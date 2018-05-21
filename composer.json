@@ -1,6 +1,6 @@
 {
     "name": "m12/neos-utils",
-    "type": "neos-flow-plugin",
+    "type": "neos-package",
     "description": "Neos utils library",
     "license": ["MIT"],
     "authors": [
