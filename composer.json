@@ -21,8 +21,8 @@
         "neos/nodetypes": "*"
     },
     "autoload": {
-        "psr-4": {
-            "M12\\Utils\\": "Classes"
+        "psr-0": {
+            "M12\\Utils": "Classes"
         }
     }
 }
