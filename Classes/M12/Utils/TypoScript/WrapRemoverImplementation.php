@@ -11,9 +11,10 @@ namespace M12\Utils\TypoScript;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
-use TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject;
-use TYPO3\TypoScript\Exception;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
+use Neos\Fusion\Exception;
+use Neos\Fusion\FusionObjects\AbstractFusionObject;
+
 
 /**
  * Implements WrapRemover
@@ -30,7 +31,7 @@ use TYPO3\TypoScript\Exception;
  * classes or other attributes were set. In such case we don't remove
  * the wrapper.
  */
-class WrapRemoverImplementation extends AbstractTypoScriptObject {
+class WrapRemoverImplementation extends AbstractFusionObject {
 
 	/**
 	 * The string to be processed
@@ -38,21 +39,21 @@ class WrapRemoverImplementation extends AbstractTypoScriptObject {
 	 * @return string
 	 */
 	public function getValue() {
-		return $this->tsValue('value');
+		return $this->fusionValue('value');
 	}
 
 	/**
 	 * @return NodeInterface
 	 */
 	public function getNode() {
-		return $this->tsValue('node');
+		return $this->fusionValue('node');
 	}
 
 	/**
 	 * @return NodeInterface
 	 */
 	public function getContentCollectionNode() {
-		$currentContext = $this->tsRuntime->getCurrentContext();
+		$currentContext = $this->runtime->getCurrentContext();
 		return $currentContext['node'];
 	}
 
@@ -84,11 +85,11 @@ class WrapRemoverImplementation extends AbstractTypoScriptObject {
 	 * This is rather dirty/temporary hack as it breaks the rule, that rendered markup
 	 * is the same in the Neos back-end and in the front-end.
 	 *
-	 * @throws \TYPO3\TypoScript\Exception
+	 * @throws Exception
 	 * @return string
 	 */
 	public function evaluate() {
-		if (!($wrapperClass = $this->tsValue('wrapperClass'))) {
+		if (!($wrapperClass = $this->fusionValue('wrapperClass'))) {
 			throw new Exception("Missing 'wrapperClass' property for WrapRemover.");
 		}
 
