@@ -1,6 +1,6 @@
 {
     "name": "m12/neos-utils",
-    "type": "typo3-flow-plugin",
+    "type": "neos-flow-plugin",
     "description": "Neos utils library",
     "license": ["MIT"],
     "authors": [
@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "typo3/neos-nodetypes": "*"
+        "neos/nodetypes": "*"
     },
     "autoload": {
         "psr-0": {
